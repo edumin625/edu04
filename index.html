@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정보 수업 안내 - 인공지능 & 메이커 교육</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f8fafc; /* 부드러운 배경색 */
+            overflow-x: hidden;
+        }
+
+        /* 부드러운 스크롤 */
+        html { scroll-behavior: smooth; }
+
+        /* 카드 호버 효과 애니메이션 */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* 텍스트 그라데이션 */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
+        }
+
+        /* 페이드 인 애니메이션 클래스 */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 배경 장식 원형 요소 */
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased relative">
+
+    <!-- 배경 장식 (Top Left) -->
+    <div class="bg-circle bg-blue-300 w-96 h-96 top-[-100px] left-[-100px] animate-pulse" style="animation-duration: 8s;"></div>
+    <!-- 배경 장식 (Bottom Right) -->
+    <div class="bg-circle bg-purple-300 w-[500px] h-[500px] bottom-[-200px] right-[-100px] animate-pulse" style="animation-duration: 10s;"></div>
+
+    <header class="container mx-auto px-6 py-16 md:py-24 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 fade-in-up">
+            미래를 만드는 <span class="text-gradient">정보 수업</span>
+        </h1>
+        <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto fade-in-up" style="transition-delay: 0.2s;">
+            세상을 변화시키는 기술, 인공지능과 아이디어를 현실로 만드는 메이커 교육의 세계로 여러분을 초대합니다.
+        </p>
+        <div class="fade-in-up" style="transition-delay: 0.4s;">
+            <a href="#courses" class="inline-block bg-blue-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 hover:shadow-xl transition duration-300">
+                수업 알아보기
+            </a>
+        </div>
+    </header>
+
+    <main id="courses" class="container mx-auto px-6 py-12 mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 max-w-6xl mx-auto">
+
+            <!-- 카드 1: 인공지능 기초 -->
+            <article class="bg-white rounded-3xl p-8 md:p-10 shadow-lg border border-slate-100 card-hover fade-in-up flex flex-col h-full relative overflow-hidden group">
+                <!-- 카드 상단 장식 -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500"></div>
+                
+                <div class="flex items-center mb-6">
+                    <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl shadow-inner">
+                        🤖
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold ml-4 text-slate-800">인공지능 기초</h2>
+                </div>
+                
+                <div class="flex-grow">
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        인공지능의 기본 원리를 이해하고, 데이터 분석 및 머신러닝 모델 구현을 통해 실생활의 문제를 해결하는 능력을 기릅니다. 파이썬(Python) 프로그래밍 기초부터 시작하여 AI 모델의 활용까지 다룹니다.
+                    </p>
+                    
+                    <h3 class="font-semibold text-slate-700 mb-3 text-lg border-b border-slate-100 pb-2">주요 학습 내용</h3>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-600">인공지능의 이해와 윤리</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-600">파이썬 기초 문법 및 데이터 다루기</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-600">머신러닝/딥러닝 기본 모델 실습 (Teachable Machine 활용)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-600">나만의 AI 프로젝트 기획 및 구현</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mt-auto">
+                    <button class="w-full bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold py-3 rounded-xl transition-colors duration-300 flex items-center justify-center group-hover:shadow-md">
+                        자료실 바로가기
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+            </article>
+
+            <!-- 카드 2: 메이커 교육 -->
+            <article class="bg-white rounded-3xl p-8 md:p-10 shadow-lg border border-slate-100 card-hover fade-in-up flex flex-col h-full relative overflow-hidden group" style="transition-delay: 0.2s;">
+                <!-- 카드 상단 장식 -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500"></div>
+
+                <div class="flex items-center mb-6">
+                    <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-3xl shadow-inner">
+                        🛠️
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold ml-4 text-slate-800">메이커 교육</h2>
+                </div>
+                
+                <div class="flex-grow">
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        상상하는 것을 직접 만들어보는 경험을 통해 창의력, 논리적 사고, 문제 해결 능력을 배양합니다. 아두이노(Arduino)와 다양한 센서를 활용하여 피지컬 컴퓨팅 프로젝트를 수행합니다.
+                    </p>
+                    
+                    <h3 class="font-semibold text-slate-700 mb-3 text-lg border-b border-slate-100 pb-2">주요 학습 내용</h3>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-purple-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-600">피지컬 컴퓨팅과 메이커 문화의 이해</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-purple-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-600">아두이노 기초 및 전자 회로 구성</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-purple-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-600">다양한 센서와 액추에이터 제어 (빛, 소리, 모터 등)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-purple-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-600">스마트 홈, 미니 로봇 등 융합 프로젝트 제작</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mt-auto">
+                    <button class="w-full bg-purple-50 text-purple-600 hover:bg-purple-600 hover:text-white font-semibold py-3 rounded-xl transition-colors duration-300 flex items-center justify-center group-hover:shadow-md">
+                        자료실 바로가기
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm">
+        <p>© 2026 OOO 선생님의 정보 수업. All rights reserved.</p>
+        <p class="mt-2 text-slate-500">학생들의 창의적인 아이디어를 응원합니다! 💡</p>
+    </footer>
+
+    <script>
+        // 스크롤 시 페이드 인 애니메이션
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // 요소가 15% 보일 때 애니메이션 시작
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // 한 번만 실행
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-in-up');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
