@@ -3,202 +3,647 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>정보 수업 안내 - 인공지능 & 메이커 교육</title>
+    <title>오션중학교 정보 클래스 - 코딩으로 그리는 미래</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+        
         body {
-            font-family: 'Pretendard', sans-serif;
-            background-color: #f8fafc; /* 부드러운 배경색 */
-            overflow-x: hidden;
+            font-family: 'Noto Sans KR', sans-serif;
+            scroll-behavior: smooth;
         }
 
-        /* 부드러운 스크롤 */
-        html { scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+        }
 
-        /* 카드 호버 효과 애니메이션 */
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .blob-bg {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.6;
+            animation: blobBounce 10s infinite alternate;
+        }
+
+        @keyframes blobBounce {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.1) translate(20px, -20px); }
+        }
+
         .card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
         }
+        
         .card-hover:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
-        /* 텍스트 그라데이션 */
-        .text-gradient {
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
+        /* 햄버거 메뉴 애니메이션 */
+        #mobile-menu-btn span {
+            transition: all 0.3s ease;
         }
-
-        /* 페이드 인 애니메이션 클래스 */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* 배경 장식 원형 요소 */
-        .bg-circle {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.5;
-        }
+        .menu-open span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+        .menu-open span:nth-child(2) { opacity: 0; }
+        .menu-open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
     </style>
 </head>
-<body class="text-slate-800 antialiased relative">
+<body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden">
 
-    <!-- 배경 장식 (Top Left) -->
-    <div class="bg-circle bg-blue-300 w-96 h-96 top-[-100px] left-[-100px] animate-pulse" style="animation-duration: 8s;"></div>
-    <!-- 배경 장식 (Bottom Right) -->
-    <div class="bg-circle bg-purple-300 w-[500px] h-[500px] bottom-[-200px] right-[-100px] animate-pulse" style="animation-duration: 10s;"></div>
-
-    <header class="container mx-auto px-6 py-16 md:py-24 text-center">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4 fade-in-up">
-            미래를 만드는 <span class="text-gradient">정보 수업</span>
-        </h1>
-        <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto fade-in-up" style="transition-delay: 0.2s;">
-            세상을 변화시키는 기술, 인공지능과 아이디어를 현실로 만드는 메이커 교육의 세계로 여러분을 초대합니다.
-        </p>
-        <div class="fade-in-up" style="transition-delay: 0.4s;">
-            <a href="#courses" class="inline-block bg-blue-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 hover:shadow-xl transition duration-300">
-                수업 알아보기
-            </a>
-        </div>
-    </header>
-
-    <main id="courses" class="container mx-auto px-6 py-12 mb-24">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 max-w-6xl mx-auto">
-
-            <!-- 카드 1: 인공지능 기초 -->
-            <article class="bg-white rounded-3xl p-8 md:p-10 shadow-lg border border-slate-100 card-hover fade-in-up flex flex-col h-full relative overflow-hidden group">
-                <!-- 카드 상단 장식 -->
-                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500"></div>
-                
-                <div class="flex items-center mb-6">
-                    <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl shadow-inner">
-                        🤖
-                    </div>
-                    <h2 class="text-2xl md:text-3xl font-bold ml-4 text-slate-800">인공지능 기초</h2>
+    <!-- 네비게이션 바 -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <img src="./img/logo.png" alt="오션정보 로고" class="h-10 w-auto" onerror="this.src='https://placehold.co/150x40/ffffff/3b82f6?text=Ocean+Info'">
                 </div>
                 
-                <div class="flex-grow">
-                    <p class="text-slate-600 mb-6 leading-relaxed">
-                        인공지능의 기본 원리를 이해하고, 데이터 분석 및 머신러닝 모델 구현을 통해 실생활의 문제를 해결하는 능력을 기릅니다. 파이썬(Python) 프로그래밍 기초부터 시작하여 AI 모델의 활용까지 다룹니다.
-                    </p>
-                    
-                    <h3 class="font-semibold text-slate-700 mb-3 text-lg border-b border-slate-100 pb-2">주요 학습 내용</h3>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-slate-600">인공지능의 이해와 윤리</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-slate-600">파이썬 기초 문법 및 데이터 다루기</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-slate-600">머신러닝/딥러닝 기본 모델 실습 (Teachable Machine 활용)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-slate-600">나만의 AI 프로젝트 기획 및 구현</span>
-                        </li>
-                    </ul>
+                <!-- 데스크톱 메뉴 -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">소개</a>
+                    <a href="#classes" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">수업 안내</a>
+                    <a href="#club" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">코딩 동아리</a>
+                    <a href="#gallery" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">활동 갤러리</a>
+                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-full font-medium transition-colors shadow-lg shadow-blue-500/30">문의하기</a>
                 </div>
 
-                <div class="mt-auto">
-                    <button class="w-full bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold py-3 rounded-xl transition-colors duration-300 flex items-center justify-center group-hover:shadow-md">
-                        자료실 바로가기
-                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                <!-- 모바일 햄버거 버튼 -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-blue-600 focus:outline-none flex flex-col gap-1.5 w-8 h-8 justify-center items-center">
+                        <span class="block w-6 h-0.5 bg-current rounded-full"></span>
+                        <span class="block w-6 h-0.5 bg-current rounded-full"></span>
+                        <span class="block w-6 h-0.5 bg-current rounded-full"></span>
                     </button>
                 </div>
-            </article>
+            </div>
+        </div>
 
-            <!-- 카드 2: 메이커 교육 -->
-            <article class="bg-white rounded-3xl p-8 md:p-10 shadow-lg border border-slate-100 card-hover fade-in-up flex flex-col h-full relative overflow-hidden group" style="transition-delay: 0.2s;">
-                <!-- 카드 상단 장식 -->
-                <div class="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500"></div>
+        <!-- 모바일 메뉴 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50">소개</a>
+                <a href="#classes" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50">수업 안내</a>
+                <a href="#club" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50">코딩 동아리</a>
+                <a href="#gallery" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50">활동 갤러리</a>
+                <a href="#contact" class="block mt-4 text-center bg-blue-600 text-white px-5 py-3 rounded-xl font-medium shadow-md">문의하기</a>
+            </div>
+        </div>
+    </nav>
 
-                <div class="flex items-center mb-6">
-                    <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-3xl shadow-inner">
-                        🛠️
+    <!-- 히어로 섹션 -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
+        <!-- 배경 장식 -->
+        <div class="blob-bg w-96 h-96 bg-blue-300 rounded-full top-20 -left-20 mix-blend-multiply"></div>
+        <div class="blob-bg w-[30rem] h-[30rem] bg-purple-300 rounded-full bottom-0 right-0 mix-blend-multiply" style="animation-delay: 2s;"></div>
+        <div class="blob-bg w-80 h-80 bg-pink-200 rounded-full top-1/2 left-1/3 mix-blend-multiply" style="animation-delay: 4s;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                <div class="text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-medium text-sm mb-6 shadow-sm">
+                        <span class="flex h-2 w-2 rounded-full bg-blue-600 animate-pulse"></span>
+                        오션중학교 정보 클래스
                     </div>
-                    <h2 class="text-2xl md:text-3xl font-bold ml-4 text-slate-800">메이커 교육</h2>
+                    <h1 class="text-5xl lg:text-7xl font-black tracking-tight text-slate-900 mb-6 leading-tight">
+                        코딩으로 그리는 <br>
+                        <span class="gradient-text">우리의 미래</span>
+                    </h1>
+                    <p class="text-lg lg:text-xl text-slate-600 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        안녕하세요! 오션중학교 정보 선생님입니다. <br class="hidden lg:block">
+                        마이크로비트와 AI를 통해 상상했던 아이디어를 현실로 만들고, <br class="hidden lg:block">
+                        미래 사회를 이끌어갈 디지털 창의력을 함께 키워갑니다.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#classes" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:-translate-y-1 flex items-center justify-center gap-2">
+                            수업 둘러보기 <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#club" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-8 py-4 rounded-full font-bold text-lg transition-all shadow-sm hover:shadow hover:-translate-y-1 flex items-center justify-center gap-2">
+                            동아리 가입안내 <i class="fa-solid fa-users"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-12 flex items-center justify-center lg:justify-start gap-6 text-slate-500 text-sm font-medium">
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-green-500 text-lg"></i> 블록코딩 기초</div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-green-500 text-lg"></i> 피지컬 컴퓨팅</div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-green-500 text-lg"></i> AI 활용 교육</div>
+                    </div>
                 </div>
                 
-                <div class="flex-grow">
-                    <p class="text-slate-600 mb-6 leading-relaxed">
-                        상상하는 것을 직접 만들어보는 경험을 통해 창의력, 논리적 사고, 문제 해결 능력을 배양합니다. 아두이노(Arduino)와 다양한 센서를 활용하여 피지컬 컴퓨팅 프로젝트를 수행합니다.
+                <div class="relative lg:h-[600px] flex items-center justify-center hidden sm:flex">
+                    <!-- 3D 느낌의 장식적 요소 (마이크로비트 모티브) -->
+                    <div class="relative w-full max-w-lg floating">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-600 rounded-3xl transform rotate-6 opacity-20 blur-xl"></div>
+                        <div class="relative bg-slate-900 rounded-3xl p-8 border-4 border-slate-800 shadow-2xl overflow-hidden aspect-[4/3] flex flex-col justify-between">
+                            <!-- 마이크로비트 핀 부분 -->
+                            <div class="absolute bottom-0 left-0 w-full h-8 flex justify-between px-8 pb-2">
+                                <div class="w-12 h-6 bg-yellow-500 rounded-t-lg"></div>
+                                <div class="w-12 h-6 bg-yellow-500 rounded-t-lg"></div>
+                                <div class="w-12 h-6 bg-yellow-500 rounded-t-lg"></div>
+                                <div class="w-12 h-6 bg-yellow-500 rounded-t-lg"></div>
+                                <div class="w-12 h-6 bg-yellow-500 rounded-t-lg"></div>
+                            </div>
+                            
+                            <!-- 상단 버튼 -->
+                            <div class="flex justify-between items-center z-10">
+                                <div class="w-6 h-6 rounded-full bg-slate-700 border-2 border-slate-600 flex items-center justify-center"><div class="w-2 h-2 rounded-full bg-slate-500"></div></div>
+                                <div class="text-slate-400 font-mono text-sm tracking-widest">OCEAN:BIT</div>
+                                <div class="w-6 h-6 rounded-full bg-slate-700 border-2 border-slate-600 flex items-center justify-center"><div class="w-2 h-2 rounded-full bg-slate-500"></div></div>
+                            </div>
+
+                            <!-- LED 매트릭스 애니메이션 -->
+                            <div class="grid grid-cols-5 gap-3 mx-auto z-10 mt-4">
+                                <!-- 하트 모양 LED 배열 -->
+                                <div class="w-4 h-4 rounded-sm bg-slate-800"></div>
+                                <div class="w-4 h-4 rounded-sm bg-red-500 shadow-[0_0_10px_#ef4444] animate-pulse"></div>
+                                <div class="w-4 h-4 rounded-sm bg-slate-800"></div>
+                                <div class="w-4 h-4 rounded-sm bg-red-500 shadow-[0_0_10px_#ef4444] animate-pulse"></div>
+                                <div class="w-4 h-4 rounded-sm bg-slate-800"></div>
+                                
+                                <div class="w-4 h-4 rounded-sm bg-red-500 shadow-[0_0_10px_#ef4444] animate-pulse"></div>
+                                <div class="w-4 h-4 rounded-sm bg-red-500 shadow-[0_0_10px_#ef4444] animate-pulse"></div>
+                                <div class="w-4 h-4 rounded-sm bg-red-500 shadow-[0_0_10px_#ef4444] animate-pulse"></div>
+                                <div class="w-4 h-4 rounded-sm bg-red-500 shadow-[0_0_10px_#ef4444] animate-pulse"></div>
+                                <div class="w-4 h-4 rounded-sm bg-red-500 shadow-[0_0_10px_#ef4444] animate-pulse"></div>
+                                
+                                <div class="w-4 h-4 rounded-sm bg-red-500 shadow-[0_0_10px_#ef4444] animate-pulse"></div>
+                                <div class="w-4 h-4 rounded-sm bg-red-500 shadow-[0_0_10px_#ef4444] animate-pulse"></div>
+                                <div class="w-4 h-4 rounded-sm bg-red-500 shadow-[0_0_10px_#ef4444] animate-pulse"></div>
+                                <div class="w-4 h-4 rounded-sm bg-red-500 shadow-[0_0_10px_#ef4444] animate-pulse"></div>
+                                <div class="w-4 h-4 rounded-sm bg-red-500 shadow-[0_0_10px_#ef4444] animate-pulse"></div>
+                                
+                                <div class="w-4 h-4 rounded-sm bg-slate-800"></div>
+                                <div class="w-4 h-4 rounded-sm bg-red-500 shadow-[0_0_10px_#ef4444] animate-pulse"></div>
+                                <div class="w-4 h-4 rounded-sm bg-red-500 shadow-[0_0_10px_#ef4444] animate-pulse"></div>
+                                <div class="w-4 h-4 rounded-sm bg-red-500 shadow-[0_0_10px_#ef4444] animate-pulse"></div>
+                                <div class="w-4 h-4 rounded-sm bg-slate-800"></div>
+                                
+                                <div class="w-4 h-4 rounded-sm bg-slate-800"></div>
+                                <div class="w-4 h-4 rounded-sm bg-slate-800"></div>
+                                <div class="w-4 h-4 rounded-sm bg-red-500 shadow-[0_0_10px_#ef4444] animate-pulse"></div>
+                                <div class="w-4 h-4 rounded-sm bg-slate-800"></div>
+                                <div class="w-4 h-4 rounded-sm bg-slate-800"></div>
+                            </div>
+                            
+                            <div class="flex justify-center z-10 mb-6 mt-4">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Micro.bit_logo.svg/512px-Micro.bit_logo.svg.png" alt="Microbit Logo" class="h-6 opacity-50 grayscale invert">
+                            </div>
+                        </div>
+
+                        <!-- 둥둥 떠다니는 장식 아이콘들 -->
+                        <div class="absolute -top-10 -right-10 bg-white p-4 rounded-2xl shadow-xl floating" style="animation-delay: 1s;">
+                            <i class="fa-solid fa-robot text-4xl text-purple-500"></i>
+                        </div>
+                        <div class="absolute -bottom-5 -left-10 bg-white p-4 rounded-2xl shadow-xl floating" style="animation-delay: 2.5s;">
+                            <i class="fa-solid fa-laptop-code text-4xl text-blue-500"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 하단 스크롤 인디케이터 -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce cursor-pointer" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+            <span class="text-slate-400 text-sm font-medium mb-2">알아보기</span>
+            <i class="fa-solid fa-chevron-down text-slate-400"></i>
+        </div>
+    </section>
+
+    <!-- 선생님 및 과목 소개 섹션 -->
+    <section id="about" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-2">About Teacher</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">오션중학교 정보 선생님을 소개합니다</h3>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    단순히 프로그래밍 문법을 암기하는 것이 아닌, 컴퓨팅 사고력을 통해 일상의 문제를 해결하는 능력을 기르는 것을 목표로 합니다. 학생들 각자의 잠재력을 깨우는 재미있는 정보 수업을 지향합니다.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 교육 철학 카드 1 -->
+                <div class="bg-slate-50 rounded-3xl p-8 border border-slate-100 card-hover text-center relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-blue-100 rounded-bl-full -z-10 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6 shadow-lg shadow-blue-500/30 transform group-hover:rotate-12 transition-transform">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-4">창의적 문제해결</h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        정답을 찾는 것을 넘어, 다양한 방법으로 문제에 접근하고 스스로 해결책을 설계하는 힘을 기릅니다.
+                    </p>
+                </div>
+
+                <!-- 교육 철학 카드 2 -->
+                <div class="bg-slate-50 rounded-3xl p-8 border border-slate-100 card-hover text-center relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-purple-100 rounded-bl-full -z-10 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="w-16 h-16 bg-purple-600 text-white rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6 shadow-lg shadow-purple-500/30 transform group-hover:-rotate-12 transition-transform">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-4">재미있는 실습 위주</h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        이론 중심의 딱딱한 수업에서 벗어나, 직접 만지고 움직이는 피지컬 컴퓨팅으로 즐겁게 배웁니다.
+                    </p>
+                </div>
+
+                <!-- 교육 철학 카드 3 -->
+                <div class="bg-slate-50 rounded-3xl p-8 border border-slate-100 card-hover text-center relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-pink-100 rounded-bl-full -z-10 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="w-16 h-16 bg-pink-500 text-white rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6 shadow-lg shadow-pink-500/30 transform group-hover:rotate-12 transition-transform">
+                        <i class="fa-solid fa-people-group"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-4">협업과 소통</h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        친구들과 아이디어를 나누고 함께 프로젝트를 완성하며 디지털 시대의 필수 역량인 협업 능력을 배양합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 정규 수업 안내 (마이크로비트 & AI) -->
+    <section id="classes" class="py-24 bg-slate-50 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-2">Curriculum</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">즐거운 정보 수업 커리큘럼</h3>
+                    <p class="text-lg text-slate-600">오션중학교 학생들을 위한 맞춤형 코딩 및 AI 교육 과정입니다.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- 마이크로비트 수업 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 flex flex-col md:flex-row group card-hover">
+                    <div class="md:w-2/5 bg-gradient-to-br from-blue-400 to-blue-600 p-8 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
+                        <!-- 간략화된 마이크로비트 SVG 아이콘 -->
+                        <svg class="w-32 h-32 text-white transform group-hover:scale-110 transition-transform duration-500 z-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                            <circle cx="6" cy="12" r="1" fill="currentColor"></circle>
+                            <circle cx="18" cy="12" r="1" fill="currentColor"></circle>
+                            <path d="M8 8h8M8 12h8M8 16h8"></path>
+                        </svg>
+                    </div>
+                    <div class="p-8 md:w-3/5 flex flex-col justify-center">
+                        <div class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold mb-4 w-max">피지컬 컴퓨팅</div>
+                        <h4 class="text-2xl font-bold text-slate-900 mb-3">마이크로비트 블록코딩</h4>
+                        <p class="text-slate-600 mb-6">
+                            화면 속 코드가 현실 세계에서 어떻게 작동하는지 직접 경험합니다. 센서를 활용하여 온도를 측정하고, 빛을 내며, 움직임을 감지하는 나만의 스마트 기기를 만들어 봅니다.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-600 font-medium">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500"></i> MakeCode 블록코딩 기초</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500"></i> LED 출력 및 버튼 입력 제어</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500"></i> 가속도, 온도 센서 활용 프로젝트</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- AI 인공지능 수업 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 flex flex-col md:flex-row group card-hover">
+                    <div class="md:w-2/5 bg-gradient-to-br from-purple-400 to-purple-600 p-8 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGwyMCAyME0yMCAwbC0yMCAyMCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIvPjwvc3ZnPg==')]"></div>
+                        <i class="fa-solid fa-brain text-7xl text-white transform group-hover:scale-110 transition-transform duration-500 z-10"></i>
+                    </div>
+                    <div class="p-8 md:w-3/5 flex flex-col justify-center">
+                        <div class="inline-block px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-bold mb-4 w-max">AI 교육</div>
+                        <h4 class="text-2xl font-bold text-slate-900 mb-3">생활 속 인공지능 탐험</h4>
+                        <p class="text-slate-600 mb-6">
+                            우리 삶을 변화시키고 있는 인공지능의 원리를 이해하고, 티처블 머신 등을 활용하여 나만의 인공지능 모델을 직접 학습시켜보고 앱으로 구현해 보는 체험형 수업입니다.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-600 font-medium">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-500"></i> 머신러닝의 기본 원리 이해</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-500"></i> 이미지, 음성 인식 모델 학습</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-500"></i> AI 윤리 및 미래 사회 토론</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 코딩 동아리 소개 -->
+    <section id="club" class="py-24 relative overflow-hidden">
+        <!-- 배경 그래픽 -->
+        <div class="absolute inset-0 bg-slate-900 -z-20"></div>
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 -z-10"></div>
+        <div class="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-white">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-blue-400 font-medium text-sm mb-6">
+                        <i class="fa-solid fa-fire text-orange-500"></i> 오션중 최고 인기 동아리
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                        끝없는 상상력의 실현,<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">코딩 마스터즈 동아리</span>
+                    </h2>
+                    <p class="text-slate-300 text-lg mb-8 leading-relaxed">
+                        정규 수업의 아쉬움을 달래고 싶은 학생, 나만의 게임이나 앱을 만들어보고 싶은 학생, 정보 올림피아드나 각종 해커톤 대회에 도전하고 싶은 학생들을 위한 동아리입니다. 선후배가 함께 멘토링하며 성장합니다.
                     </p>
                     
-                    <h3 class="font-semibold text-slate-700 mb-3 text-lg border-b border-slate-100 pb-2">주요 학습 내용</h3>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-purple-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-slate-600">피지컬 컴퓨팅과 메이커 문화의 이해</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-purple-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-slate-600">아두이노 기초 및 전자 회로 구성</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-purple-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-slate-600">다양한 센서와 액추에이터 제어 (빛, 소리, 모터 등)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-purple-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-slate-600">스마트 홈, 미니 로봇 등 융합 프로젝트 제작</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="mt-auto">
-                    <button class="w-full bg-purple-50 text-purple-600 hover:bg-purple-600 hover:text-white font-semibold py-3 rounded-xl transition-colors duration-300 flex items-center justify-center group-hover:shadow-md">
-                        자료실 바로가기
-                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    <div class="space-y-4 mb-10">
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-800/50 border border-slate-700 hover:bg-slate-800 transition-colors">
+                            <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 text-xl flex-shrink-0">
+                                <i class="fa-solid fa-gamepad"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">나만의 게임 만들기</h4>
+                                <p class="text-sm text-slate-400">엔트리, 스크래치를 활용한 창작 게임 개발 프로젝트</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-800/50 border border-slate-700 hover:bg-slate-800 transition-colors">
+                            <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-400 text-xl flex-shrink-0">
+                                <i class="fa-solid fa-trophy"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">교내외 대회 준비반</h4>
+                                <p class="text-sm text-slate-400">알고리즘 기초 학습 및 각종 소프트웨어 경진대회 출전</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg shadow-blue-500/30 hover:-translate-y-1">
+                        동아리 가입 신청하기
                     </button>
                 </div>
-            </article>
+                
+                <!-- 코드 에디터 스타일의 장식 -->
+                <div class="rounded-2xl overflow-hidden shadow-2xl bg-[#1E1E1E] border border-slate-700 transform lg:rotate-2 hover:rotate-0 transition-transform duration-500 font-mono text-sm sm:text-base">
+                    <!-- 에디터 헤더 -->
+                    <div class="flex items-center px-4 py-3 bg-[#2D2D2D] border-b border-black">
+                        <div class="flex gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="mx-auto text-slate-400 text-xs">ocean_club.py</div>
+                    </div>
+                    <!-- 에디터 내용 -->
+                    <div class="p-6 text-slate-300 overflow-x-auto">
+<pre><code class="language-python"><span class="text-purple-400">class</span> <span class="text-yellow-300">CodingClub</span>:
+    <span class="text-purple-400">def</span> <span class="text-blue-300">__init__</span>(<span class="text-orange-300">self</span>, student):
+        <span class="text-orange-300">self</span>.student = student
+        <span class="text-orange-300">self</span>.passion = <span class="text-orange-400">100</span>
+        <span class="text-orange-300">self</span>.skills = []
 
+    <span class="text-purple-400">def</span> <span class="text-blue-300">join_club</span>(<span class="text-orange-300">self</span>):
+        <span class="text-cyan-300">print</span>(<span class="text-green-300">f"환영합니다! </span>{<span class="text-orange-300">self</span>.student}<span class="text-green-300">님!"</span>)
+        
+    <span class="text-purple-400">def</span> <span class="text-blue-300">learn_and_grow</span>(<span class="text-orange-300">self</span>):
+        <span class="text-purple-400">while</span> <span class="text-orange-400">True</span>:
+            <span class="text-orange-300">self</span>.passion += <span class="text-orange-400">10</span>
+            <span class="text-orange-300">self</span>.skills.append(<span class="text-green-300">'Creativity'</span>)
+            <span class="text-purple-400">if</span> <span class="text-orange-300">self</span>.passion > <span class="text-orange-400">9999</span>:
+                <span class="text-purple-400">return</span> <span class="text-green-300">"미래의 혁신가 탄생!"</span>
+
+<span class="text-slate-500"># 새로운 부원 모집 중...</span>
+my_future = CodingClub(<span class="text-green-300">"오션중 학생"</span>)
+my_future.join_club()
+</code></pre>
+                    </div>
+                </div>
+            </div>
         </div>
-    </main>
+    </section>
 
-    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm">
-        <p>© 2026 OOO 선생님의 정보 수업. All rights reserved.</p>
-        <p class="mt-2 text-slate-500">학생들의 창의적인 아이디어를 응원합니다! 💡</p>
+    <!-- 활동 갤러리 섹션 (모의 데이터 사용) -->
+    <section id="gallery" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-2">Gallery</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">생생한 수업 및 동아리 활동</h3>
+                <p class="text-lg text-slate-600">오션중학교 학생들의 빛나는 아이디어가 실현되는 순간들입니다.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                <!-- 갤러리 아이템 (Placeholder 이미지 사용) -->
+                <div class="group relative rounded-2xl overflow-hidden aspect-square cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="코딩 실습" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-blue-400 font-bold text-sm mb-1">수업 풍경</span>
+                        <h4 class="text-white font-bold text-lg">마이크로비트 첫 실습</h4>
+                    </div>
+                </div>
+                
+                <div class="group relative rounded-2xl overflow-hidden aspect-square cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="동아리 활동" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-purple-400 font-bold text-sm mb-1">동아리</span>
+                        <h4 class="text-white font-bold text-lg">해커톤 아이디어 회의</h4>
+                    </div>
+                </div>
+
+                <div class="group relative rounded-2xl overflow-hidden aspect-square cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="로봇 실습" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-green-400 font-bold text-sm mb-1">AI 교육</span>
+                        <h4 class="text-white font-bold text-lg">스마트 모빌리티 프로젝트</h4>
+                    </div>
+                </div>
+                
+                <!-- 모바일에서는 3개만 보이고 데스크톱에서 6개 보이도록 -->
+                <div class="hidden md:block group relative rounded-2xl overflow-hidden aspect-square cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="팀워크" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-blue-400 font-bold text-sm mb-1">협업</span>
+                        <h4 class="text-white font-bold text-lg">팀 프로젝트 발표 준비</h4>
+                    </div>
+                </div>
+
+                <div class="hidden md:block group relative rounded-2xl overflow-hidden aspect-square cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="회로 기판" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-orange-400 font-bold text-sm mb-1">피지컬 컴퓨팅</span>
+                        <h4 class="text-white font-bold text-lg">센서 연결 실습</h4>
+                    </div>
+                </div>
+
+                <div class="hidden md:block group relative rounded-2xl overflow-hidden aspect-square cursor-pointer">
+                    <div class="w-full h-full bg-slate-100 flex items-center justify-center text-slate-400 transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="text-center">
+                            <i class="fa-solid fa-camera text-4xl mb-2"></i>
+                            <p class="font-medium">더 많은 사진은<br>교실 게시판에!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 문의 및 메시지 남기기 -->
+    <section id="contact" class="py-24 bg-blue-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+                <div class="grid md:grid-cols-5">
+                    <div class="md:col-span-2 bg-blue-600 p-10 text-white flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4">선생님께 질문하기</h3>
+                            <p class="text-blue-100 mb-8 text-sm leading-relaxed">
+                                수업 내용, 동아리 가입, 진로 상담 등 궁금한 점이 있다면 언제든 편하게 메시지를 남겨주세요.
+                            </p>
+                            
+                            <div class="space-y-4 text-sm">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <span>오션중학교 정보 컴퓨터실</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-clock"></i>
+                                    </div>
+                                    <span>쉬는시간, 점심시간 방문 환영</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-10">
+                            <i class="fa-brands fa-python text-4xl text-blue-300 opacity-50"></i>
+                            <i class="fa-brands fa-html5 text-4xl text-blue-300 opacity-50 ml-2"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="md:col-span-3 p-10">
+                        <form id="contactForm" class="space-y-6">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">학년 반</label>
+                                    <input type="text" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow bg-slate-50 focus:bg-white" placeholder="예: 1학년 2반" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">이름</label>
+                                    <input type="text" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow bg-slate-50 focus:bg-white" placeholder="홍길동" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">문의 구분</label>
+                                <select class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow bg-slate-50 focus:bg-white text-slate-700">
+                                    <option>수업 관련 질문</option>
+                                    <option>동아리 가입 문의</option>
+                                    <option>기타 상담</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">내용</label>
+                                <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow bg-slate-50 focus:bg-white resize-none" placeholder="궁금한 내용을 자유롭게 적어주세요." required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 rounded-xl transition-colors shadow-lg">
+                                메시지 보내기
+                            </button>
+                        </form>
+
+                        <!-- 제출 완료 메시지 (초기엔 숨김) -->
+                        <div id="successMessage" class="hidden h-full flex-col items-center justify-center text-center py-10">
+                            <div class="w-16 h-16 bg-green-100 text-green-500 rounded-full flex items-center justify-center text-3xl mb-4 mx-auto">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">메시지가 전송되었습니다!</h4>
+                            <p class="text-slate-600">선생님이 확인 후 교실에서 답변해 줄게요.</p>
+                            <button type="button" onclick="resetForm()" class="mt-6 text-blue-600 font-medium hover:underline">다른 질문하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <img src="./img/logo.png" alt="오션정보 로고" class="h-8 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all" onerror="this.src='https://placehold.co/120x32/0f172a/94a3b8?text=Ocean+Info'">
+            </div>
+            <p class="text-sm text-center md:text-left">
+                &copy; 2026 오션중학교 정보교과. All rights reserved.<br>
+                본 페이지는 정보 수업 및 동아리 홍보를 위한 목적입니다.
+            </p>
+        </div>
     </footer>
 
     <script>
-        // 스크롤 시 페이드 인 애니메이션
-        document.addEventListener("DOMContentLoaded", function() {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15 // 요소가 15% 보일 때 애니메이션 시작
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // 한 번만 실행
-                    }
-                });
-            }, observerOptions);
-
-            const fadeElements = document.querySelectorAll('.fade-in-up');
-            fadeElements.forEach(el => observer.observe(el));
+        // 스크롤 시 네비게이션 바 스타일 변경
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.replace('bg-white/80', 'bg-white/95');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.replace('bg-white/95', 'bg-white/80');
+            }
         });
+
+        // 모바일 햄버거 메뉴 토글
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn.classList.toggle('menu-open');
+        });
+
+        // 모바일 메뉴 링크 클릭 시 메뉴 닫기
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.classList.remove('menu-open');
+            });
+        });
+
+        // 문의 폼 제출 이벤트 처리 (실제 서버 전송이 아닌 UI 피드백만 제공)
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // 기본 제출 방지
+            
+            // 전송 중 효과 (버튼 텍스트 변경 등)
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerText;
+            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin mr-2"></i>전송 중...';
+            submitBtn.disabled = true;
+
+            // 1초 후 성공 메시지 표시 (서버 통신 시뮬레이션)
+            setTimeout(() => {
+                contactForm.style.display = 'none';
+                successMessage.classList.remove('hidden');
+                successMessage.classList.add('flex');
+                
+                // 버튼 상태 원복
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+                contactForm.reset();
+            }, 1000);
+        });
+
+        // 폼 초기화 함수
+        function resetForm() {
+            successMessage.classList.add('hidden');
+            successMessage.classList.remove('flex');
+            contactForm.style.display = 'block';
+        }
     </script>
 </body>
 </html>
